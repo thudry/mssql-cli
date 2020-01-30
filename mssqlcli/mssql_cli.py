@@ -372,7 +372,7 @@ class MssqlCli(object):
     def _output_query(self, output):
         """ Specifies how query output is handled """
         if self.interactive_mode:
-            click.echo_via_pager('\n'.join(output))
+            self.echo_via_pager('\n'.join(output))
         else:
             if self.output_file:
                 try:
@@ -712,6 +712,29 @@ class MssqlCli(object):
     def get_last_query(self):
         """Get the last query executed or None."""
         return self.query_history[-1][0] if self.query_history else None
+
+    def is_too_wide(self, line):
+        """Will this line be too wide to fit into terminal?"""
+        if not self.prompt_session:
+            return False
+        return (
+            len(line) > self.prompt_session.output.get_size().columns
+        )
+
+    def is_too_tall(self, lines):
+        """Are there too many lines to fit into terminal?"""
+        if not self.prompt_session:
+            return False
+        # ignore last 3 lines due to footer results
+        return len(lines) >= (self.prompt_session.output.get_size().rows - 3)
+
+    def echo_via_pager(self, text):
+        lines = text.split("\n")
+
+        if self.is_too_tall(lines) or any(self.is_too_wide(l) for l in lines):
+            click.echo_via_pager(text)
+        else:
+            click.echo(text)
 
     @staticmethod
     def has_meta_cmd(query):
