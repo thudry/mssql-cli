@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:19.04
 
 ARG MSSQL_CLI_SERVER
 ARG MSSQL_CLI_DATABASE
@@ -17,7 +17,7 @@ RUN apt-get -y install apt-transport-https
 
 # Import the public repository GPG keys
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-RUN echo "deb [arch=amd64] http://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod testing main" | sudo tee /etc/apt/sources.list.d/mssql-cli.list
+RUN echo "deb [arch=amd64] http://packages.microsoft.com/repos/microsoft-ubuntu-disco-prod testing main" | sudo tee /etc/apt/sources.list.d/mssql-cli.list
 
 RUN apt-get update
 RUN apt-get install -y mssql-cli
