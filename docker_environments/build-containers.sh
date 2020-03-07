@@ -20,8 +20,9 @@ if [[ -z "${MSSQL_CLI_SERVER}" || -z "${MSSQL_CLI_DATABASE}" || \
 fi
 
 local_repo=$1
+docker_dir='linux-direct-stable'
 
-for dir in $local_repo/Linux/*; do
+for dir in $local_repo/$docker_dir/*; do
     dist_name=${dir##*/}
     tag_name=mssqlcli:$dist_name
 
