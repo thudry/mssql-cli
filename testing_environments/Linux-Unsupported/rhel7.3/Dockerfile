@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhel7.0
+FROM registry.redhat.io/rhel7.3
 
 ARG MSSQL_CLI_SERVER
 ARG MSSQL_CLI_DATABASE

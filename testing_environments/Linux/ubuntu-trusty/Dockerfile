@@ -11,7 +11,7 @@ ENV MSSQL_CLI_USER=$MSSQL_CLI_USER
 ENV MSSQL_CLI_PASSWORD=$MSSQL_CLI_PASSWORD
 
 RUN apt-get update
-RUN apt-get -y install nano wget sudo curl
+RUN apt-get -y install wget sudo curl
 RUN apt-get -y install software-properties-common
 RUN apt-get -y install apt-transport-https
 

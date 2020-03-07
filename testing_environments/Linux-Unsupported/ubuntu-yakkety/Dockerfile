@@ -1,4 +1,4 @@
-FROM ubuntu:17.10
+FROM ubuntu:16.10
 
 ARG MSSQL_CLI_SERVER
 ARG MSSQL_CLI_DATABASE
@@ -11,13 +11,13 @@ ENV MSSQL_CLI_USER=$MSSQL_CLI_USER
 ENV MSSQL_CLI_PASSWORD=$MSSQL_CLI_PASSWORD
 
 RUN apt-get update
-RUN apt-get -y install nano wget sudo curl
+RUN apt-get -y install wget sudo curl
 RUN apt-get -y install software-properties-common
 RUN apt-get -y install apt-transport-https
 
 # Installs mssql-cli from Packages.Microsoft
 # RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-# RUN echo "deb [arch=amd64] http://packages.microsoft.com/repos/microsoft-ubuntu-artful-prod testing main" | sudo tee /etc/apt/sources.list.d/mssql-cli.list
+# RUN echo "deb [arch=amd64] http://packages.microsoft.com/repos/microsoft-ubuntu-yakkety-prod testing main" | sudo tee /etc/apt/sources.list.d/mssql-cli.list
 # RUN apt-get update
 # RUN apt-get install -y mssql-cli
 
