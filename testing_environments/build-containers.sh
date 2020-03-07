@@ -33,6 +33,8 @@ for dir in $local_repo/Linux/*; do
         --build-arg MSSQL_CLI_DATABASE=${MSSQL_CLI_DATABASE} \
         --build-arg MSSQL_CLI_USER=${MSSQL_CLI_USER} \
         --build-arg MSSQL_CLI_PASSWORD=${MSSQL_CLI_PASSWORD} \
+        --build-arg REDHAT_USERNAME=${REDHAT_USERNAME} \
+        --build-arg REDHAT_PASSWORD=${REDHAT_PASSWORD} \
         -t $tag_name -f $dir/Dockerfile . $arg_no_cache
 
     echo "\n\n"

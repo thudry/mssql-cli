@@ -12,6 +12,11 @@ A RedHat login must be created and registered with Dcoker to test RHEL builds:
 https://access.redhat.com/RegistryAuthentication
 
 ## Build Testing Environments
+
+### Set Environment Variables
+Set RedHat username and password!
+
+### Run Build Script
 From the `testing_environments` folder, run:
 ```sh
 ./build_containers.sh $(pwd) --no-cache
