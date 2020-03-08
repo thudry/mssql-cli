@@ -1,12 +1,18 @@
 # Creates docker containers for each supported Linux distribution
 
-if [ -z "$1" ]
-  then
+if [ -z "$1" ]; then
     echo "Argument should be path to local repo."
     exit 1
 fi
 
-if [ $2='--no-cache' ]; then
+if [ -z "$2" ]; then
+    echo "Must specify folder name for Docker images. For example: 'linux=prod'."
+    exit 1
+else
+    docker_dir=$2
+fi
+
+if [ $3='--no-cache' ]; then
     arg_no_cache='--no-cache'
 else
     arg_no_cache=''
@@ -20,7 +26,6 @@ if [[ -z "${MSSQL_CLI_SERVER}" || -z "${MSSQL_CLI_DATABASE}" || \
 fi
 
 local_repo=$1
-docker_dir='linux-direct-stable'
 
 for dir in $local_repo/$docker_dir/*; do
     dist_name=${dir##*/}

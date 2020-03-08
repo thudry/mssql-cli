@@ -16,10 +16,16 @@ https://access.redhat.com/RegistryAuthentication
 ### Set Environment Variables
 Set RedHat username and password!
 
-### Run Build Script
+### Build Docker Images
 From the `testing_environments` folder, run:
 ```sh
-./build_containers.sh $(pwd) --no-cache
+./build_containers.sh $(pwd) <folder-name> --no-cache
 ```
 
 To use cached containers, remove the `--no-cache` argument.
+
+### Run Docker Images
+From the `testing_environments` folder, run:
+```sh
+./run_containers.sh $(pwd) <folder-name>
+```

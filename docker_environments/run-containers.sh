@@ -7,8 +7,14 @@ if [ -z "$1" ]
     exit 1
 fi
 
+if [ -z "$2" ]; then
+    echo "Must specify folder name for Docker images. For example: 'linux=prod'."
+    exit 1
+else
+    docker_dir=$2
+fi
+
 local_repo=$1
-docker_dir='linux-direct-stable'
 
 for dir in $local_repo/$docker_dir/*; do
     dist_name=${dir##*/}
